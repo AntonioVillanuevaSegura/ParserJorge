@@ -56,7 +56,10 @@ int main() {
     char linea[1024];//Buffer lectura de lineas
     FILE *fich;
  
-    fich = fopen(NOMBRE_FICHERO, "r");
+    if ( (fich = fopen(NOMBRE_FICHERO, "r")) ==NULL){//Error apertura fichero
+		printf ("Error fichero %s\n",NOMBRE_FICHERO);
+		return(EXIT_FAILURE);
+	}
 
     //Lectura lineas del fichero texto  
     while(fgets(linea, 1024, (FILE*) fich)) {
