@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+//Compilacion manual gcc -o leer leer.c 
 
 #define NOMBRE_FICHERO "fichero.txt"
 //---------------------------------------------------------------------- 
 // FUNCIONES ESPECIFICAS PARA TRATAR CADA TIPO DE INFORMACION 
 //---------------------------------------------------------------------- 
-
 double caudal(double valor){
-	//Funcion para tratar caudal	
-	
+	//Funcion para tratar caudal		
 	return valor*2;//Retorno de un valor ejemplo 
 }
 //----------------------------------------------------------------------
@@ -30,9 +28,12 @@ double altura(double valor){
 }
 
 //----------------------------------------------------------------------
-//FUNCIONES OBTENCION DE DATOS NUMERICOS Y TEST DE INFORMACION
+/*FUNCIONES OBTENCION DE DATOS NUMERICOS Y TEST DE INFORMACION
+ *Utilizo punteros de tipo char , char * para evitar copiar a cada llamada 
+ * la informacion asi char *linea sustituye a char linea [1024] 
+ */
 //---------------------------------------------------------------------- 
-double obtieneNumero(char linea[1024]){
+double obtieneNumero(char *linea){//obtieneNumero(char linea[1024])
 	//Busca el caracter : devuelve numero asociado 
 	char *num;
 	double n;
@@ -42,7 +43,7 @@ double obtieneNumero(char linea[1024]){
 	return n;//Retorna un double 
 }
 //----------------------------------------------------------------------
-int existePalabra(char linea [256],char  palabra [64]){
+int existePalabra(char *linea ,char  *palabra ){//existePalabra(char linea [256],char  palabra [64]){
 	//Existe la palabra clave en esta linea ? 1 Si 0 No
 	//Buscamos CAUDAL PRESION TEMPERATURA ALTURA 
 	return (int ) (strstr(linea,palabra)!=NULL ?  1:0) ;	 
@@ -75,8 +76,7 @@ int main() {
 	  
       if (existePalabra(linea,"ALTURA")==1){//Existe ALTURA en esta linea ?		  
 		  printf ("A L T U R A= %.2f\n",altura(obtieneNumero(linea)));
-	  }	  	  	    
-      
+	  }	  	  	          
     }
     
     fclose(fich);//Cierre del fichero abierto 
