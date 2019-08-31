@@ -1,0 +1,9 @@
+Valor de CAUDAL (litros/min):0.5
+Valor de PRESION (psi):5.25
+Valor de TEMPERATURA (grados celsius):37.5
+Valor de ALTURA (m):12.78
+
+Valor de CAUDAL (litros/min):0.3
+Valor de PRESION (psi):8.9
+Valor de TEMPERATURA (grados celsius):80.2
+Valor de ALTURA (m):7.3
